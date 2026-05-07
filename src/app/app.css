@@ -1,33 +1,3 @@
-
-
-/* ── Variables ─ */
-:root {
-  --azul:       #0d2550;
-  --azul-medio: #1a4a8a;
-  --turquesa:   #00b8d9;
-  --verde:      #1faa7d;
-  --fondo:      #f0f5fb;
-  --blanco:     #ffffff;
-  --borde:      #dce8f5;
-  --texto-gris: #6b82a0;
-  --radio:      10px;
-  --trans:      180ms ease;
-}
-
-/* ── Base ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--fondo);
-  color: var(--azul);
-  font-family: 'Nunito', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-/* ── Cabecera ───────────────────────────────── */
 .aplicacion__cabecera {
   background: var(--azul);
   padding: 0.9rem 10rem 0.9rem 2.5rem;
@@ -52,7 +22,6 @@ body {
   pointer-events: none;
 }
 
-/* Logo arriba a la derecha — más grande */
 .aplicacion__logo {
   position: absolute;
   right: 1.75rem;
@@ -83,7 +52,6 @@ body {
   z-index: 1;
 }
 
-
 .aplicacion__titulo::after {
   content: '';
   display: block;
@@ -105,7 +73,6 @@ body {
   z-index: 1;
 }
 
-/* ── Main─*/
 .aplicacion {
   max-width: 680px;
   margin: 0 auto;
@@ -115,7 +82,6 @@ body {
   gap: 2.5rem;
 }
 
-/* ── Secciones*/
 .aplicacion__seccion {
   animation: subir 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -148,7 +114,6 @@ body {
   flex-shrink: 0;
 }
 
-/* ── Formulario ─────────────────────────────── */
 .formulario-nota {
   background: var(--blanco);
   border-radius: var(--radio);
@@ -159,7 +124,6 @@ body {
   margin-top: 2rem;
 }
 
-/* Barra de color superior */
 .formulario-nota::before {
   content: '';
   display: block;
@@ -174,7 +138,6 @@ body {
 
 .formulario-nota__grupo {
   border: none;
-   
   padding: 2rem 2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -187,7 +150,6 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--turquesa);
-
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--borde);
 }
@@ -234,7 +196,6 @@ body {
   min-height: 108px;
   line-height: 1.65;
 }
-
 
 .formulario-nota__acciones {
   list-style: none;
@@ -286,7 +247,6 @@ body {
   background: var(--fondo);
 }
 
-/* ── Lista de notas ── */
 .lista-notas {
   list-style: none;
   display: flex;
@@ -305,7 +265,7 @@ body {
   background: var(--blanco);
 }
 
-/* ── Responsivo ─────────────────────────────── */
+
 @media (max-width: 560px) {
   .aplicacion__cabecera { padding: 0.9rem 7rem 0.9rem 1.25rem; }
   .aplicacion__logo { height: 64px; width: 64px; right: 1rem; }
@@ -313,10 +273,4 @@ body {
   .formulario-nota__grupo { padding: 1.5rem; }
   .formulario-nota__acciones { flex-direction: column; }
   .boton { width: 100%; }
-}
-
-/* ── Foco accesible ─────────────────────────── */
-:focus-visible {
-  outline: 2px solid var(--turquesa);
-  outline-offset: 2px;
 }
