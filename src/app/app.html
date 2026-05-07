@@ -1,89 +1,90 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Taskiop | Tu App de Notas</title>
-    <meta
-      name="description"
-      content="Taskiop: Organiza tu día a día fácilmente. Crea, modifica y gestiona tus notas diarias."
-    />
-    <meta
-      name="keywords"
-      content="Taskiop, notas, organización, tareas, productividad, aplicación, web"
-    />
-    <meta name="author" content="Irene Foncubierta Lobatón" />
-    <meta name="theme-color" content="#4f46e5" /> 
-    <meta
-      property="og:title"
-      content="Taskiop | Tu App de Notas"
-    />
-    <meta
-      property="og:description"
-      content="Taskiop: Organiza tu día a día fácilmente. Crea, modifica y gestiona tus notas diarias."
-    />
-    <meta property="og:image" content="logo.png" />
-    <meta property="og:type" content="website" />
-    <meta name="robots" content="index, follow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="../../public/logo.png" />
-    <link rel="stylesheet" href="app.css" />
-  </head>
+<header class="aplicacion__cabecera">
+  <h1 class="aplicacion__titulo">Mis Tareas Diarias</h1>
+  <p class="aplicacion__descripcion">Organiza tu día a día fácilmente.</p>
+</header>
+
+<main class="aplicacion">
   
-  <body>
-    <header class="aplicacion__cabecera">
-      <h1 class="aplicacion__titulo">Mis Tareas Diarias</h1>
-      <p class="aplicacion__descripcion">Organiza tu día a día fácilmente.</p>
+  <section class="aplicacion__seccion" aria-labelledby="titulo-formulario">
+    <h2 class="aplicacion__subtitulo" id="titulo-formulario">
+      @if (notaActualId !== null) { Editando nota } 
+      @else { Redactar nueva nota }
+    </h2>
+    
+    <form class="formulario-nota" (ngSubmit)="guardarNota()">
+      <fieldset class="formulario-nota__grupo">
+        <legend class="formulario-nota__leyenda">Detalles de tu nota</legend>
+        
+        <p class="formulario-nota__campo">
+          <label class="formulario-nota__etiqueta" for="titulo-nota">Título de la nota:</label>
+          <input 
+            class="formulario-nota__entrada"
+            type="text" 
+            id="titulo-nota" 
+            name="titulo" 
+            [(ngModel)]="tituloNota"
+            placeholder="Ej. Lista de la compra..." 
+            required 
+          />
+        </p>
+        
+        <p class="formulario-nota__campo">
+          <label class="formulario-nota__etiqueta" for="contenido-nota">Contenido:</label>
+          <textarea 
+            class="formulario-nota__entrada formulario-nota__entrada--area"
+            id="contenido-nota" 
+            name="contenido" 
+            [(ngModel)]="contenidoNota"
+            placeholder="Escribe todos los detalles aquí..." 
+            rows="4" 
+            required
+          ></textarea>
+        </p>
+        
+        <ul class="formulario-nota__acciones">
+          <li>
+            <button class="boton boton--primario" type="submit">
+              @if (notaActualId !== null) { Actualizar } 
+              @else { Guardar Nota }
+            </button>
+          </li>
+          <li>
+            <button class="boton boton--secundario" type="button" (click)="limpiarFormulario()">
+              Cancelar / Limpiar
+            </button>
+          </li>
+        </ul>
+      </fieldset>
+    </form>
+  </section>
+
+  <section class="aplicacion__seccion" aria-labelledby="titulo-lista">
+    <header>
+      <h2 class="aplicacion__subtitulo" id="titulo-lista">Tus notas guardadas</h2>
     </header>
     
-    <main class="aplicacion">
-      
-      <section class="aplicacion__seccion" aria-labelledby="titulo-formulario">
-        <h2 class="aplicacion__subtitulo" id="titulo-formulario">Redactar nueva nota</h2>
-        <form class="formulario-nota">
-          <fieldset class="formulario-nota__grupo">
-            <legend class="formulario-nota__leyenda">Detalles de tu nota</legend>
+    <ul class="lista-notas">
+      @for (nota of notas; track nota.id) {
+        <li class="lista-notas__item">
+          <article class="nota">
+            <header class="nota__cabecera">
+              <h3 class="nota__titulo">{{ nota.titulo }}</h3>
+              <time class="nota__fecha" [attr.datetime]="nota.fecha">{{ nota.fecha }}</time>
+            </header>
             
-            <p class="formulario-nota__campo">
-              <label class="formulario-nota__etiqueta" for="titulo-nota">Título de la nota:</label>
-              <input 
-                class="formulario-nota__entrada"
-                type="text" 
-                id="titulo-nota" 
-                name="titulo" 
-                placeholder="Ej. Lista de la compra..." 
-                required 
-              />
-            </p>
+            <p class="nota__contenido">{{ nota.contenido }}</p>
             
-            <p class="formulario-nota__campo">
-              <label class="formulario-nota__etiqueta" for="contenido-nota">Contenido:</label>
-              <textarea 
-                class="formulario-nota__entrada formulario-nota__entrada--area"
-                id="contenido-nota" 
-                name="contenido" 
-                placeholder="Escribe todos los detalles aquí..." 
-                rows="4" 
-                required
-              ></textarea>
-            </p>
-            
-            <ul class="formulario-nota__acciones">
-              <li><button class="boton boton--primario" type="submit">Guardar Nota</button></li>
-              <li><button class="boton boton--secundario" type="reset">Cancelar / Limpiar</button></li>
-            </ul>
-          </fieldset>
-        </form>
-      </section>
-
-      <section class="aplicacion__seccion" aria-labelledby="titulo-lista">
-        <header>
-          <h2 class="aplicacion__subtitulo" id="titulo-lista">Tus notas guardadas</h2>
-        </header>
-        
-        <ul class="lista-notas">
-          <p class="lista-notas__mensaje-vacio">Aún no tienes notas. ¡Crea la primera arriba!</p>
-        </ul>
-      </section>
-    </main> 
-  </body>
-</html>
+            <footer class="nota__pie">
+              <ul class="nota__acciones">
+                <li><button class="boton boton--advertencia" type="button" (click)="editarNota(nota)">Modificar</button></li>
+                <li><button class="boton boton--peligro" type="button" (click)="eliminarNota(nota.id)">Eliminar</button></li>
+              </ul>
+            </footer>
+          </article>
+        </li>
+      } @empty {
+        <p class="lista-notas__mensaje-vacio">Aún no tienes notas. ¡Crea la primera arriba!</p>
+      }
+    </ul>
+  </section>
+</main>
