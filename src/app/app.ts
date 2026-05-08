@@ -1,12 +1,7 @@
 import { Component} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-interface Nota {
-  id: number;
-  titulo: string;
-  contenido: string;
-  fecha: string;
-}
+import { NotasService } from './notas-service';
+import { Nota } from './nota.model';
 
 @Component({
   selector: 'app-root',
@@ -20,18 +15,15 @@ export class App{
   tituloNota: string = '';
   contenidoNota: string = '';
 
-  guardarNota() {
+  constructor(private notasService: NotasService) {
+    this.notas = this.notasService.obtenerNotas();
+  }
+
+guardarNota() {
     if (this.tituloNota.trim() === '' || this.contenidoNota.trim() === '') return;
 
     if (this.notaActualId !== null) {
-      const indice = this.notas.findIndex(nota => nota.id === this.notaActualId);
-      if (indice !== -1) {
-        this.notas[indice] = {
-          ...this.notas[indice],
-          titulo: this.tituloNota,
-          contenido: this.contenidoNota
-        };
-      }
+      this.notasService.actualizarNota(this.notaActualId, this.tituloNota, this.contenidoNota);
     } else {
       const nuevaNota: Nota = {
         id: Date.now(),
@@ -39,7 +31,7 @@ export class App{
         contenido: this.contenidoNota,
         fecha: new Date().toLocaleDateString()
       };
-      this.notas = [nuevaNota, ...this.notas];
+      this.notasService.agregarNota(nuevaNota);
     }
 
     this.limpiarFormulario();
@@ -52,7 +44,7 @@ export class App{
   }
 
   eliminarNota(id: number) {
-    this.notas = this.notas.filter(nota => nota.id !== id);
+    this.notasService.eliminarNota(id);
   }
 
   limpiarFormulario() {
