@@ -1,7 +1,21 @@
+/* =============================================
+   formulario-nota.component.css
+   ============================================= */
+
+:host {
+  display: block;
+  animation: subir 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes subir {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .aplicacion__subtitulo {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: #1e293b;
+  color: #0d2550;
   font-weight: 700;
 }
 
@@ -9,8 +23,8 @@
   background-color: white;
   padding: 2.5rem;
   border-radius: 16px;
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
-  border: 1px solid #f1f5f9;
+  box-shadow: 0 10px 15px -3px rgba(13, 37, 80, 0.08);
+  border: 1px solid #dce8f5;
 }
 
 .formulario-nota__grupo {
@@ -21,8 +35,8 @@
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #334155;
-  border-bottom: 2px solid #f1f5f9;
+  color: #1a4a8a;
+  border-bottom: 2px solid #dce8f5;
   padding-bottom: 0.5rem;
   width: 100%;
 }
@@ -36,26 +50,26 @@
 .formulario-nota__etiqueta {
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: #475569;
+  color: #1a4a8a;
   font-size: 0.9rem;
 }
 
 .formulario-nota__entrada {
   padding: 0.8rem 1rem;
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background-color: #f0f5fb;
+  border: 1px solid #dce8f5;
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
-  color: #334155;
+  color: #0d2550;
   transition: all 0.2s;
 }
 
 .formulario-nota__entrada:focus {
   outline: none;
-  border-color: #8b5cf6;
+  border-color: #00b8d9;
   background-color: white;
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 0 3px rgba(0, 184, 217, 0.15);
 }
 
 .formulario-nota__entrada--area {
@@ -69,6 +83,55 @@
   gap: 1rem;
   margin-top: 2rem;
   padding-left: 0;
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid #dce8f5;
   padding-top: 1.5rem;
+}
+
+/* ── Botones ────────────────────────────────── */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.4rem;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.boton:active { transform: translateY(1px); }
+
+.boton--primario {
+  background: linear-gradient(135deg, #1a4a8a, #00b8d9);
+  color: white;
+  box-shadow: 0 4px 14px rgba(0, 184, 217, 0.3);
+}
+
+.boton--primario:hover {
+  box-shadow: 0 6px 20px rgba(0, 184, 217, 0.45);
+  filter: brightness(1.07);
+}
+
+.boton--secundario {
+  background: transparent;
+  color: #6b82a0;
+  border-color: #dce8f5;
+}
+
+.boton--secundario:hover {
+  border-color: #1a4a8a;
+  color: #0d2550;
+  background: #f0f5fb;
+}
+
+/* ── Responsivo ─────────────────────────────── */
+@media (max-width: 560px) {
+  .formulario-nota { padding: 1.5rem; }
+  .formulario-nota__acciones { flex-direction: column; }
+  .boton { width: 100%; }
 }
