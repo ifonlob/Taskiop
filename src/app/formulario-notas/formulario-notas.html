@@ -1,1 +1,52 @@
-<p>formulario-notas works!</p>
+<section class="aplicacion__seccion" aria-labelledby="titulo-formulario">
+  <h2 class="aplicacion__subtitulo" id="titulo-formulario">
+    @if (notaId !== null) { Editando nota } 
+    @else { Redactar nueva nota }
+  </h2>
+  
+  <form class="formulario-nota" (ngSubmit)="guardar()">
+    <fieldset class="formulario-nota__grupo">
+      <legend class="formulario-nota__leyenda">Detalles de tu nota</legend>
+      
+      <p class="formulario-nota__campo">
+        <label class="formulario-nota__etiqueta" for="titulo-nota">Título de la nota:</label>
+        <input 
+          class="formulario-nota__entrada"
+          type="text" 
+          id="titulo-nota" 
+          name="titulo" 
+          [(ngModel)]="titulo"
+          placeholder="Ej. Lista de la compra..." 
+          required 
+        />
+      </p>
+      
+      <p class="formulario-nota__campo">
+        <label class="formulario-nota__etiqueta" for="contenido-nota">Contenido:</label>
+        <textarea 
+          class="formulario-nota__entrada formulario-nota__entrada--area"
+          id="contenido-nota" 
+          name="contenido" 
+          [(ngModel)]="contenido"
+          placeholder="Escribe todos los detalles aquí..." 
+          rows="4" 
+          required
+        ></textarea>
+      </p>
+      
+      <ul class="formulario-nota__acciones">
+        <li>
+          <button class="boton boton--primario" type="submit">
+            @if (notaId !== null) { Actualizar } 
+            @else { Guardar Nota }
+          </button>
+        </li>
+        <li>
+          <a class="boton boton--secundario" routerLink="/lista">
+            Cancelar / Volver
+          </a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+</section>
