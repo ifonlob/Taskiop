@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --azul:       #0d2550;
+  --azul-medio: #1a4a8a;
+  --turquesa:   #00b8d9;
+  --verde:      #1faa7d;
+  --fondo:      #f0f5fb;
+  --blanco:     #ffffff;
+  --borde:      #dce8f5;
+  --texto-gris: #6b82a0;
+  --radio:      10px;
+  --trans:      180ms ease;
+}
+
+*{ 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0;
+  list-style-type: none; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+body {
+  background: var(--fondo);
+  color: var(--azul);
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--turquesa);
+  outline-offset: 2px;
+}
