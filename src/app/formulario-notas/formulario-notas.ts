@@ -1,30 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotasService } from '../../servicios/notas-service';
+import { NotasService } from '../servicios/notas-service';
 
 @Component({
-  selector: 'app-formulario-nota',
+  selector: 'app-formulario-notas',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './formulario-nota.component.html'
+  templateUrl: './formulario-notas.html'
 })
-export class FormularioNotaComponent implements OnInit {
-  idNota: number | null = null;
+export class FormularioNotasComponent implements OnInit {
+  notaId: number | null = null;
   titulo: string = '';
   contenido: string = '';
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private notasService: NotasService
-  ) {}
+  constructor(private route: ActivatedRoute, private router: Router, private notasService: NotasService) {}
 
   ngOnInit() {
-    const idParam = this.route.snapshot.paramMap.get('id');
-    if (idParam) {
-      this.idNota = +idParam;
-      const nota = this.notasService.obtenerNotaPorId(this.idNota);
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.notaId = +id;
+      const nota = this.notasService.obtenerNotaPorId(this.notaId);
       if (nota) {
         this.titulo = nota.titulo;
         this.contenido = nota.contenido;
@@ -33,8 +28,8 @@ export class FormularioNotaComponent implements OnInit {
   }
 
   guardar() {
-    if (this.idNota) {
-      this.notasService.actualizarNota(this.idNota, this.titulo, this.contenido);
+    if (this.notaId !== null) {
+      this.notasService.actualizarNota(this.notaId, this.titulo, this.contenido);
     } else {
       this.notasService.agregarNota({
         id: Date.now(),
@@ -43,6 +38,6 @@ export class FormularioNotaComponent implements OnInit {
         fecha: new Date().toLocaleDateString()
       });
     }
-    this.router.navigate(['/notas']);
+    this.router.navigate(['/lista']); // Vuelve a la lista automáticamente
   }
 }

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NotasService } from '../core/notas.service';
-import { Nota } from '../core/nota.model';
+import { RouterLink } from '@angular/router';
+import { NotasService } from '../../servicios/notas-service';
+import { Nota } from '../../servicios/nota.model';
 
 @Component({
   selector: 'app-lista-notas',
   standalone: true,
-  imports: [RouterModule],
-  templateUrl: './lista-notas.component.html'
+  imports: [RouterLink],
+  templateUrl: './lista-notas.html'
 })
 export class ListaNotasComponent implements OnInit {
   notas: Nota[] = [];

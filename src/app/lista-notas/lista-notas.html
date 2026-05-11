@@ -1,1 +1,45 @@
-<p>lista-notas works!</p>
+<section class="aplicacion__seccion" aria-labelledby="titulo-lista">
+  <header>
+    <h2 class="aplicacion__subtitulo" id="titulo-lista">Tus notas guardadas</h2>
+  </header>
+  
+  <ul class="lista-notas">
+    @for (nota of notas; track nota.id) {
+      <li class="lista-notas__item">
+        <article class="nota">
+          <header class="nota__cabecera">
+            <h3 class="nota__titulo">{{ nota.titulo }}</h3>
+            <time class="nota__fecha" [attr.datetime]="nota.fecha">{{ nota.fecha }}</time>
+          </header>
+          
+          <p class="nota__contenido">{{ nota.contenido }}</p>
+          
+          <footer class="nota__pie">
+            <ul class="nota__acciones">
+              
+              <li>
+                <a 
+                  class="boton boton--advertencia" 
+                  [routerLink]="['/editar', nota.id]">
+                  Modificar
+                </a>
+              </li>
+              
+              <li>
+                <button 
+                  class="boton boton--peligro" 
+                  type="button" 
+                  (click)="eliminar(nota.id)">
+                  Eliminar
+                </button>
+              </li>
+              
+            </ul>
+          </footer>
+        </article>
+      </li>
+    } @empty {
+      <p class="lista-notas__mensaje-vacio">Aún no tienes notas. ¡Ve a "Nueva Nota" para crear la primera!</p>
+    }
+  </ul>
+</section>
