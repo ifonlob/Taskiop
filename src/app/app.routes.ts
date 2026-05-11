@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { ListaNotasComponent } from './lista-notas/lista-notas.component';
-import { FormularioNotaComponent } from './formulario-nota/formulario-nota.component';
+import { FormularioNotaComponent } from './formulario-notas/formulario-notas';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'notas', pathMatch: 'full' },
