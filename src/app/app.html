@@ -3,8 +3,18 @@
   <p class="aplicacion__descripcion">Organiza tu día a día fácilmente.</p>
   
   <nav class="aplicacion__nav">
-    <a routerLink="/notas" class="boton boton--secundario">Ver mis Notas</a>
-    <a routerLink="/notas/nueva" class="boton boton--primario">Nueva Nota</a>
+    <ul class="nav-lista">
+      <li>
+        <a routerLink="/lista" routerLinkActive="activo" class="boton boton--secundario">
+          Ver mis Notas
+        </a>
+      </li>
+      <li>
+        <a routerLink="/formulario" routerLinkActive="activo" class="boton boton--primario">
+          + Nueva Nota
+        </a>
+      </li>
+    </ul>
   </nav>
 </header>
 
