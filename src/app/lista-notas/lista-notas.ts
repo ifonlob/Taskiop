@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NotasService } from '../servicios/notas-service';
-import { Nota } from '../servicios/nota.model';
+import { NotasService } from '../../servicios/notas-service';
+import { Nota } from '../../servicios/nota.model';
 
 @Component({
   selector: 'app-lista-notas',
@@ -19,3 +19,4 @@ export class ListaNotasComponent implements OnInit {
     this.notasService.eliminarNota(id);
     this.notas = this.notasService.obtenerNotas();
   }
+}
