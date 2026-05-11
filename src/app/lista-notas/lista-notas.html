@@ -6,7 +6,7 @@
   <ul class="lista-notas">
     @for (nota of notas; track nota.id) {
       <li class="lista-notas__item">
-        <article class="nota">
+        <article class="nota" [routerLink]="['/detalle', nota.id]" style="cursor: pointer;">
           <header class="nota__cabecera">
             <h3 class="nota__titulo">{{ nota.titulo }}</h3>
             <time class="nota__fecha" [attr.datetime]="nota.fecha">{{ nota.fecha }}</time>

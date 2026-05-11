@@ -1,0 +1,41 @@
+.detalle-nota {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border: 1px solid #f1f5f9;
+}
+
+.detalle-nota__cabecera {
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.detalle-nota__titulo {
+  font-size: 2.5rem;
+  color: #1e293b;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.detalle-nota__fecha {
+  color: #94a3b8;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.detalle-nota__contenido {
+  font-size: 1.15rem;
+  color: #334155;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  min-height: 200px;
+}
+
+.detalle-nota__pie {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f1f5f9;
+  text-align: right;
+}
