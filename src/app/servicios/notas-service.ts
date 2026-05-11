@@ -11,6 +11,10 @@ export class NotasService {
     return this.notas;
   }
 
+  obtenerNotaPorId(id: number) {
+    return this.notas.find(nota => nota.id === id);
+  }
+
   agregarNota(nuevaNota: Nota) {
     this.notas.push(nuevaNota);
   }
