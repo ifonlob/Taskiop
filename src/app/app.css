@@ -1,35 +1,5 @@
-
-/* ── Variables ─────────────────────────────── */
-:root {
-  --azul:       #0d2550;
-  --azul-medio: #1a4a8a;
-  --turquesa:   #00b8d9;
-  --verde:      #1faa7d;
-  --fondo:      #f0f5fb;
-  --blanco:     #ffffff;
-  --borde:      #dce8f5;
-  --texto-gris: #6b82a0;
-  --radio:      10px;
-  --trans:      180ms ease;
-}
-
-/* ── Base ───────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--fondo);
-  color: var(--azul);
-  font-family: 'Nunito', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-/* ── Cabecera ───────────────────────────────── */
 .aplicacion__cabecera {
   background: var(--azul);
-  /* Padding derecho generoso para dejar espacio al logo */
   padding: 0.9rem 10rem 0.9rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -52,7 +22,6 @@ body {
   pointer-events: none;
 }
 
-/* Logo arriba a la derecha — más grande */
 .aplicacion__logo {
   position: absolute;
   right: 1.75rem;
@@ -83,7 +52,6 @@ body {
   z-index: 1;
 }
 
-/* Subrayado degradado más corto y pegado */
 .aplicacion__titulo::after {
   content: '';
   display: block;
@@ -105,7 +73,6 @@ body {
   z-index: 1;
 }
 
-/* ── Main ───────────────────────────────────── */
 .aplicacion {
   max-width: 680px;
   margin: 0 auto;
@@ -115,7 +82,6 @@ body {
   gap: 2.5rem;
 }
 
-/* ── Secciones ──────────────────────────────── */
 .aplicacion__seccion {
   animation: subir 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -148,7 +114,6 @@ body {
   flex-shrink: 0;
 }
 
-/* ── Formulario ─────────────────────────────── */
 .formulario-nota {
   background: var(--blanco);
   border-radius: var(--radio);
@@ -159,7 +124,6 @@ body {
   margin-top: 2rem;
 }
 
-/* Barra de color superior */
 .formulario-nota::before {
   content: '';
   display: block;
@@ -174,7 +138,6 @@ body {
 
 .formulario-nota__grupo {
   border: none;
-  /* Padding top mayor para separar la leyenda de la barra */
   padding: 2rem 2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -187,7 +150,6 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--turquesa);
-  /* Más espacio debajo de la leyenda antes de los campos */
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--borde);
 }
@@ -235,7 +197,6 @@ body {
   line-height: 1.65;
 }
 
-/* ── Botones ────────────────────────────────── */
 .formulario-nota__acciones {
   list-style: none;
   display: flex;
@@ -286,7 +247,6 @@ body {
   background: var(--fondo);
 }
 
-/* ── Lista de notas ─────────────────────────── */
 .lista-notas {
   list-style: none;
   display: flex;
@@ -305,7 +265,79 @@ body {
   background: var(--blanco);
 }
 
-/* ── Responsivo ─────────────────────────────── */
+.lista-notas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.lista-notas__mensaje-vacio {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--color-texto-suave);
+  padding: 3rem;
+  border: 2px dashed var(--color-borde);
+  border-radius: var(--radio-borde);
+  background-color: var(--color-fondo);
+}
+
+.nota {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: rgba(25, 199, 230, 0.13);
+  border: 2px solid var(--color-borde);
+  border-radius: 2rem;
+  padding: 1.25rem;
+  border-left: 5px solid var(--color-primario);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.nota:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra);
+}
+
+.nota__cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+}
+
+.nota__titulo {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--color-texto);
+}
+
+.nota__fecha {
+  font-size: 0.75rem;
+  color: var(--color-texto-suave);
+  white-space: nowrap;
+}
+
+.nota__contenido {
+  margin: 0 0 1.25rem 0;
+  color: var(--color-texto-suave);
+  line-height: 1.5;
+  flex-grow: 1;
+  white-space: pre-wrap;
+}
+
+.nota__pie {
+  border-top: 1px solid var(--color-borde);
+  padding-top: 1rem;
+}
+
+.nota__acciones {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+
 @media (max-width: 560px) {
   .aplicacion__cabecera { padding: 0.9rem 7rem 0.9rem 1.25rem; }
   .aplicacion__logo { height: 64px; width: 64px; right: 1rem; }
@@ -313,10 +345,4 @@ body {
   .formulario-nota__grupo { padding: 1.5rem; }
   .formulario-nota__acciones { flex-direction: column; }
   .boton { width: 100%; }
-}
-
-/* ── Foco accesible ─────────────────────────── */
-:focus-visible {
-  outline: 2px solid var(--turquesa);
-  outline-offset: 2px;
 }
