@@ -9,7 +9,6 @@ import { Nota } from '../servicios/nota.model';
   imports: [RouterLink],
   templateUrl: './lista-notas.html',
   styleUrl: './lista-notas.css'
-
 })
 export class ListaNotasComponent implements OnInit {
   notas: Nota[] = [];

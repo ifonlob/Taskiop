@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core'; 
-import { FormsModule } from '@angular/forms'; 
-import { ActivatedRoute, Router, RouterLink } from '@angular/router'; 
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NotasService } from '../servicios/notas-service';
 
 @Component({
   selector: 'app-formulario-notas',
   standalone: true,
-  imports: [FormsModule, RouterLink], 
+  imports: [FormsModule, RouterLink],
   templateUrl: './formulario-notas.html',
   styleUrl: './formulario-notas.css'
 })
@@ -23,9 +23,11 @@ export class FormularioNotasComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
+    
     if (id) {
-      this.notaId = +id;
+      this.notaId = Number(id)
       const nota = this.notasService.obtenerNotaPorId(this.notaId);
+      
       if (nota) {
         this.titulo = nota.titulo;
         this.contenido = nota.contenido;
@@ -34,6 +36,11 @@ export class FormularioNotasComponent implements OnInit {
   }
 
   guardar() {
+    if (this.titulo.trim() === '' || this.contenido.trim() === '') {
+      alert('Por favor, rellena el título y el contenido.');
+      return; 
+    }
+
     if (this.notaId !== null) {
       this.notasService.actualizarNota(this.notaId, this.titulo, this.contenido);
     } else {
@@ -44,6 +51,7 @@ export class FormularioNotasComponent implements OnInit {
         fecha: new Date().toLocaleDateString()
       });
     }
+    
     this.router.navigate(['/lista']);
   }
 }

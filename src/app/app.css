@@ -1,172 +1,34 @@
-/* =============================================
-   app.component.css
-   Cabecera, navegación y contenedor principal
-   ============================================= */
-
-/* ── Cabecera ───────────────────────────────── */
 .aplicacion__cabecera {
-  background: var(--azul);
-  padding: 0.9rem 10rem 0.9rem 2.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  min-height: 76px;
-  position: relative;
-  overflow: hidden;
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  margin-bottom: 2rem;
 }
 
-.aplicacion__cabecera::after {
-  content: '';
-  position: absolute;
-  right: -60px;
-  top: -80px;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,184,217,0.18) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* ── Logo ───────────────────────────────────── */
-.aplicacion__logo {
-  position: absolute;
-  right: 1.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 90px;
-  width: 90px;
-  object-fit: contain;
-  z-index: 1;
-  filter: drop-shadow(0 3px 10px rgba(0,184,217,0.3));
-  transition: filter var(--trans), transform var(--trans);
-}
-
-.aplicacion__logo:hover {
-  filter: drop-shadow(0 5px 16px rgba(0,184,217,0.5));
-  transform: translateY(-52%);
-}
-
-/* ── Título ─────────────────────────────────── */
 .aplicacion__titulo {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(1.3rem, 3.5vw, 1.85rem);
-  font-weight: 800;
-  color: var(--blanco);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  position: relative;
-  z-index: 1;
+  font-size: 2.5rem;
+  color: #1e293b;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
 }
 
-.aplicacion__titulo::after {
-  content: '';
-  display: block;
-  height: 3px;
-  width: 40px;
-  margin-top: 0.3rem;
-  border-radius: 2px;
-  background: linear-gradient(90deg, var(--turquesa), var(--verde));
-}
-
-/* ── Descripción ────────────────────────────── */
 .aplicacion__descripcion {
-  color: rgba(255,255,255,0.5);
-  font-size: 0.72rem;
-  font-weight: 300;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-top: 0.25rem;
-  position: relative;
-  z-index: 1;
-}
-
-/* ── Navegación ─────────────────────────────── */
-.aplicacion__nav {
-  margin-top: 0.85rem;
-  position: relative;
-  z-index: 1;
+  color: #64748b;
+  font-size: 1.1rem;
 }
 
 .nav-lista {
-  list-style: none;
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-/* Botones de nav — base compartida */
-.boton {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  padding: 0.38rem 1rem;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  border-radius: 7px;
-  border: 1.5px solid transparent;
-  cursor: pointer;
-  letter-spacing: 0.01em;
-  text-decoration: none;
-  transition: background var(--trans), color var(--trans),
-              border-color var(--trans), box-shadow var(--trans), transform var(--trans);
-  -webkit-tap-highlight-color: transparent;
+  gap: 1rem;
+  list-style: none;
+  margin-top: 2rem;
 }
 
-.boton:active { transform: translateY(1px); }
-
-/* Secundario — borde blanco semitransparente */
-.boton--secundario {
-  background: transparent;
-  color: rgba(255,255,255,0.75);
-  border-color: rgba(255,255,255,0.25);
-}
-
-.boton--secundario:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.5);
-  color: var(--blanco);
-}
-
-/* Primario — degradado turquesa */
-.boton--primario {
-  background: linear-gradient(135deg, var(--azul-medio), var(--turquesa));
-  color: var(--blanco);
-  border-color: transparent;
-  box-shadow: 0 3px 10px rgba(0,184,217,0.3);
-}
-
-.boton--primario:hover {
-  box-shadow: 0 5px 18px rgba(0,184,217,0.45);
-  filter: brightness(1.08);
-}
-
-/* Ruta activa */
-.boton.activo {
-  background: rgba(255,255,255,0.15);
-  border-color: rgba(255,255,255,0.4);
-  color: var(--blanco);
-}
-
-.boton--primario.activo {
-  background: linear-gradient(135deg, var(--turquesa), var(--verde));
-  border-color: transparent;
-}
-
-/* ── Contenedor principal ───────────────────── */
-/* Este es el <main class="aplicacion"> que envuelve router-outlet */
-.aplicacion {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem 5rem;
-}
-
-/* ── Responsivo ─────────────────────────────── */
-@media (max-width: 560px) {
-  .aplicacion__cabecera { padding: 0.9rem 7rem 0.9rem 1.25rem; }
-  .aplicacion__logo     { height: 64px; width: 64px; right: 1rem; }
-  .aplicacion           { padding: 2rem 1rem 4rem; }
-  .nav-lista            { gap: 0.4rem; }
-  .boton                { font-size: 0.78rem; padding: 0.35rem 0.8rem; }
+.activo {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
 }
