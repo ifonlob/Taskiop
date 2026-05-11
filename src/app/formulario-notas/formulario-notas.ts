@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
 import { FormsModule } from '@angular/forms'; 
 import { ActivatedRoute, Router, RouterLink } from '@angular/router'; 
-import { NotasService } from '../servicios/notas-service'; 
+import { NotasService } from '../servicios/notas-service';
 
 @Component({
   selector: 'app-formulario-notas',
