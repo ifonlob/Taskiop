@@ -1,1 +1,29 @@
-<p>detalles-notas works!</p>
+<section class="aplicacion__seccion">
+  <nav style="margin-bottom: 2rem;">
+    <a routerLink="/lista" class="boton boton--secundario">← Volver a la lista</a>
+  </nav>
+
+  @if (nota) {
+    <article class="detalle-nota">
+      <header class="detalle-nota__cabecera">
+        <h2 class="detalle-nota__titulo">{{ nota.titulo }}</h2>
+        <time class="detalle-nota__fecha">Creada el: {{ nota.fecha }}</time>
+      </header>
+      
+      <div class="detalle-nota__contenido">
+        <p>{{ nota.contenido }}</p>
+      </div>
+
+      <footer class="detalle-nota__pie">
+        <a class="boton boton--advertencia" [routerLink]="['/editar', nota.id]">
+          Editar esta nota
+        </a>
+      </footer>
+    </article>
+  } @else {
+    <div class="mensaje-error">
+      <h2>Vaya, no encontramos esta nota.</h2>
+      <p>Es posible que haya sido eliminada o que la dirección sea incorrecta.</p>
+    </div>
+  }
+</section>
