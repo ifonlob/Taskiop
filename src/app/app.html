@@ -1,35 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Taskiop | Tu App de Notas</title>
-    <meta
-      name="description"
-      content="Taskiop: Organiza tu día a día fácilmente. Crea, modifica y gestiona tus notas diarias."
-    />
-    <meta
-      name="keywords"
-      content="Taskiop, notas, organización, tareas, productividad, aplicación, web"
-    />
-    <meta name="author" content="Irene Foncubierta Lobatón" />
-    <meta name="theme-color" content="#4f46e5" /> 
-    <meta
-      property="og:title"
-      content="Taskiop | Tu App de Notas"
-    />
-    <meta
-      property="og:description"
-      content="Taskiop: Organiza tu día a día fácilmente. Crea, modifica y gestiona tus notas diarias."
-    />
-    <meta property="og:image" content="logo.png" />
-    <meta property="og:type" content="website" />
-    <meta name="robots" content="index, follow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="../../public/logo.png" />
-    <link rel="stylesheet" href="app.css" />
-  </head>
-  
-<nav class="aplicacion__nav">
+<header class="aplicacioncabecera">
+  <h1 class="aplicaciontitulo">Mis Tareas Diarias</h1>
+  <p class="aplicaciondescripcion">Organiza tu día a día fácilmente.</p>
+
+<nav class="aplicacionnav">
   <ul class="nav-lista">
     <li>
       <a routerLink="/lista" routerLinkActive="activo" class="boton boton--secundario">
@@ -45,15 +18,6 @@
 </nav>
 </header>
 
-      <section class="aplicacion__seccion" aria-labelledby="titulo-lista">
-        <header>
-          <h2 class="aplicacion__subtitulo" id="titulo-lista">Tus notas guardadas</h2>
-        </header>
-        
-        <ul class="lista-notas">
-          <p class="lista-notas__mensaje-vacio">Aún no tienes notas. ¡Crea la primera arriba!</p>
-        </ul>
-      </section>
-    </main> 
-  </body>
-</html>
+<main class="aplicacion">
+  <router-outlet></router-outlet>
+</main>
