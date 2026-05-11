@@ -48,7 +48,7 @@ export class FormularioNotasComponent implements OnInit {
         id: Date.now(),
         titulo: this.titulo,
         contenido: this.contenido,
-        fecha: new Date().toLocaleDateString().split('T')[0]
+        fecha: new Date().toLocaleDateString()
       });
     }
     

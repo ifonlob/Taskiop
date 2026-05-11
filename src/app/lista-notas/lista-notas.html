@@ -9,7 +9,7 @@
         <article class="nota">
           <header class="nota__cabecera">
             <h3 class="nota__titulo">{{ nota.titulo }}</h3>
-            <time class="nota__fecha" [attr.datetime]="nota.fecha">{{ nota.fecha | date:'dd/MM/yyyy' }}</time>
+            <time class="nota__fecha" [attr.datetime]="nota.fecha">{{ nota.fecha }}</time>
           </header>
           
           <p class="nota__contenido">{{ nota.contenido }}</p>
