@@ -1,37 +1,57 @@
-:root {
-  --azul:       #0d2550;
-  --azul-medio: #1a4a8a;
-  --turquesa:   #00b8d9;
-  --verde:      #1faa7d;
-  --fondo:      #f0f5fb;
-  --blanco:     #ffffff;
-  --borde:      #dce8f5;
-  --texto-gris: #6b82a0;
-  --radio:      10px;
-  --trans:      180ms ease;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-*{ 
-  box-sizing: border-box; 
-  margin: 0; 
+* {
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
-  list-style-type: none; 
-}
-
-html { 
-  scroll-behavior: smooth; 
 }
 
 body {
-  background: var(--fondo);
-  color: var(--azul);
-  font-family: 'Nunito', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background-color: #f0f4f8;
+  color: #334155;
 }
 
-:focus-visible {
-  outline: 2px solid var(--turquesa);
-  outline-offset: 2px;
+.boton {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.boton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.boton--primario { 
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white; 
+}
+.boton--secundario { 
+  background-color: #e2e8f0; 
+  color: #475569; 
+}
+.boton--secundario:hover { 
+  background-color: #cbd5e1; 
+}
+.boton--advertencia { 
+  background-color: #fef08a; 
+  color: #854d0e; 
+}
+.boton--peligro { 
+  background-color: #fee2e2; 
+  color: #991b1b; 
+}
+
+.aplicacion {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }

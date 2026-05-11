@@ -1,0 +1,74 @@
+.aplicacion__subtitulo {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.formulario-nota {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+  border: 1px solid #f1f5f9;
+}
+
+.formulario-nota__grupo {
+  border: none;
+}
+
+.formulario-nota__leyenda {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #334155;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+.formulario-nota__campo {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario-nota__etiqueta {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.formulario-nota__entrada {
+  padding: 0.8rem 1rem;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #334155;
+  transition: all 0.2s;
+}
+
+.formulario-nota__entrada:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.formulario-nota__entrada--area {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.formulario-nota__acciones {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-left: 0;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1.5rem;
+}
