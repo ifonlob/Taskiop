@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Nota } from './nota.model';
+import { Nota } from '../modelos/nota.model';
 
 @Injectable({
   providedIn: 'root',
