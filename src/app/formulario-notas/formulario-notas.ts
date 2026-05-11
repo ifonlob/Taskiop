@@ -7,7 +7,8 @@ import { NotasService } from '../servicios/notas-service';
   selector: 'app-formulario-notas',
   standalone: true,
   imports: [FormsModule, RouterLink], 
-  templateUrl: './formulario-notas.html'
+  templateUrl: './formulario-notas.html',
+  styleUrl: './formulario-notas.css'
 })
 export class FormularioNotasComponent implements OnInit {
   notaId: number | null = null;

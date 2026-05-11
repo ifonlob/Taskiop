@@ -7,7 +7,9 @@ import { Nota } from '../servicios/nota.model';
   selector: 'app-lista-notas',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './lista-notas.html'
+  templateUrl: './lista-notas.html',
+  styleUrl: './lista-notas.css'
+
 })
 export class ListaNotasComponent implements OnInit {
   notas: Nota[] = [];

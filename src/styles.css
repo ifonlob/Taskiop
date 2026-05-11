@@ -1,3 +1,9 @@
+/* =============================================
+   styles.css  — GLOBAL (src/styles.css)
+   Variables, reset, body, fuentes
+   ============================================= */
+
+/* ── Variables globales ─────────────────────── */
 :root {
   --azul:       #0d2550;
   --azul-medio: #1a4a8a;
@@ -11,16 +17,9 @@
   --trans:      180ms ease;
 }
 
-*{ 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0;
-  list-style-type: none; 
-}
-
-html { 
-  scroll-behavior: smooth; 
-}
+/* ── Reset ──────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--fondo);
@@ -31,6 +30,13 @@ body {
   min-height: 100vh;
 }
 
+/* ── Animación compartida ───────────────────── */
+@keyframes subir {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Foco accesible global ──────────────────── */
 :focus-visible {
   outline: 2px solid var(--turquesa);
   outline-offset: 2px;
