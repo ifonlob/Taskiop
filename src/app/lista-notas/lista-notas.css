@@ -1,10 +1,25 @@
+/* =============================================
+   lista-notas.component.css
+   ============================================= */
+
+:host {
+  display: block;
+  animation: subir 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes subir {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .aplicacion__subtitulo {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: #1e293b;
+  color: #0d2550;
   font-weight: 700;
 }
 
+/* ── Lista en grid ──────────────────────────── */
 .lista-notas {
   list-style: none;
   display: grid;
@@ -12,12 +27,15 @@
   gap: 1.5rem;
 }
 
+/* ── Tarjeta ────────────────────────────────── */
 .nota {
   background-color: white;
   border-radius: 16px;
   padding: 1.8rem;
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
-  border: 1px solid #f1f5f9;
+  box-shadow: 0 10px 15px -3px rgba(13, 37, 80, 0.08);
+  border: 1px solid #dce8f5;
+  /* Línea de acento superior con la paleta del logo */
+  border-top: 3px solid #00b8d9;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -26,50 +44,103 @@
 
 .nota:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 184, 217, 0.15);
 }
 
+/* ── Cabecera de tarjeta ─────────────────────── */
 .nota__cabecera {
   margin-bottom: 1rem;
 }
 
 .nota__titulo {
-  font-size: 1.3rem;
-  color: #0f172a;
+  font-size: 1.1rem;
+  color: #0d2550;
   margin-bottom: 0.4rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .nota__fecha {
-  font-size: 0.85rem;
-  color: #94a3b8;
+  font-size: 0.8rem;
+  color: #6b82a0;
   font-weight: 500;
 }
 
+/* ── Contenido ──────────────────────────────── */
 .nota__contenido {
   flex-grow: 1;
-  color: #475569;
+  color: #3a5272;
   line-height: 1.6;
   margin-bottom: 1.5rem;
   white-space: pre-wrap;
   font-size: 0.95rem;
 }
 
+/* ── Pie y acciones ──────────────────────────── */
 .nota__acciones {
   list-style: none;
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid #dce8f5;
   padding-top: 1rem;
 }
 
+/* ── Botones ────────────────────────────────── */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.38rem 0.9rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 7px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.boton:active { transform: translateY(1px); }
+
+.boton--advertencia {
+  color: #1a4a8a;
+  border-color: rgba(26, 74, 138, 0.25);
+  background: transparent;
+}
+
+.boton--advertencia:hover {
+  background: rgba(26, 74, 138, 0.08);
+  border-color: #1a4a8a;
+}
+
+.boton--peligro {
+  color: #c0392b;
+  border-color: rgba(192, 57, 43, 0.25);
+  background: transparent;
+}
+
+.boton--peligro:hover {
+  background: #c0392b;
+  color: white;
+  border-color: #c0392b;
+}
+
+/* ── Mensaje vacío ───────────────────────────── */
 .lista-notas__mensaje-vacio {
   text-align: center;
-  color: #64748b;
+  color: #6b82a0;
   padding: 3rem;
   background-color: white;
   border-radius: 16px;
-  border: 2px dashed #cbd5e1;
+  border: 2px dashed #dce8f5;
   grid-column: 1 / -1;
+}
+
+/* ── Responsivo ─────────────────────────────── */
+@media (max-width: 560px) {
+  .lista-notas { grid-template-columns: 1fr; }
+  .nota__acciones { justify-content: stretch; flex-direction: column; }
+  .boton { width: 100%; justify-content: center; }
 }
