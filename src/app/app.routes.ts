@@ -8,6 +8,5 @@ export const routes: Routes = [
   { path: 'lista', component: ListaNotasComponent },
   { path: 'formulario', component: FormularioNotasComponent },
   { path: 'editar/:id', component: FormularioNotasComponent },
-  // 2. Añadimos la ruta para el detalle
   { path: 'detalle/:id', component: DetalleNotaComponent } 
 ];
