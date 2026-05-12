@@ -1,0 +1,68 @@
+<section class="aplicacion__seccion" aria-labelledby="titulo-recordatorio">
+
+  <h2 class="aplicacion__subtitulo" id="titulo-recordatorio">Recordatorios</h2>
+
+  <ul class="lista-recordatorios" aria-label="Recordatorios guardados">
+
+    @for (rec of recordatorios; track rec.id) {
+      <li class="recordatorio"
+          [class.recordatorio--expirado]="rec.expirado">
+
+        <div class="recordatorio__icono" aria-hidden="true">
+          @if (rec.expirado) {
+            <span>&#10003;</span>
+          } @else {
+            <span>&#128276;</span>
+          }
+        </div>
+
+        <div class="recordatorio__cuerpo">
+          <div class="recordatorio__cabecera">
+            <h3 class="recordatorio__titulo">{{ rec.titulo }}</h3>
+            <span class="recordatorio__badge">
+              @if (rec.expirado) {
+                Enviado
+              } @else {
+                Pendiente
+              }
+            </span>
+          </div>
+
+          @if (rec.descripcion) {
+            <p class="recordatorio__descripcion">{{ rec.descripcion }}</p>
+          }
+
+          <div class="recordatorio__meta">
+            @if (rec.fecha) {
+              <span class="recordatorio__meta-item">
+                @if (rec.hora) {
+                  {{ rec.fecha }} &middot; {{ rec.hora }}
+                } @else {
+                  {{ rec.fecha }}
+                }
+              </span>
+            }
+            <span class="recordatorio__meta-item">
+              Aviso {{ rec.antelacion === '60' ? '1 hora' : '1 día' }} antes
+            </span>
+          </div>
+        </div>
+
+        <button
+          class="recordatorio__eliminar"
+          type="button"
+          (click)="eliminar(rec.id)"
+          [attr.aria-label]="'Eliminar ' + rec.titulo">
+          &#10005;
+        </button>
+
+      </li>
+    } @empty {
+      <li class="lista-recordatorios__vacio">
+        No tienes recordatorios. ¡Añade una fecha a una nota para crear uno!
+      </li>
+    }
+
+  </ul>
+
+</section>

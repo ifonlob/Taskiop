@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
-import { ListaNotasComponent } from './lista-notas/lista-notas'; 
-import { FormularioNotasComponent } from './formulario-notas/formulario-notas'; 
+import { ListaNotasComponent } from './lista-notas/lista-notas';
+import { FormularioNotasComponent } from './formulario-notas/formulario-notas';
+import { Recordatorio } from './recordatorio/recordatorio';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'lista', pathMatch: 'full' },  
+  { path: '', redirectTo: 'lista', pathMatch: 'full' },
   { path: 'lista', component: ListaNotasComponent },
   { path: 'formulario', component: FormularioNotasComponent },
-  { path: 'editar/:id', component: FormularioNotasComponent }
+  { path: 'editar/:id', component: FormularioNotasComponent },
+  { path: 'recordatorios', component: Recordatorio }
 ];
