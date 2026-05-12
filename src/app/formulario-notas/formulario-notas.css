@@ -135,3 +135,87 @@
   .formulario-nota__acciones { flex-direction: column; }
   .boton { width: 100%; }
 }
+
+/* ── Bloque recordatorio opcional ───────────── */
+.formulario-nota__bloque-recordatorio {
+  background: #f0f5fb;
+  border: 1.5px dashed #dce8f5;
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.formulario-nota__bloque-titulo {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a4a8a;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.formulario-nota__opcional {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #6b82a0;
+}
+
+.formulario-nota__fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.formulario-nota__bloque-recordatorio .formulario-nota__entrada {
+  background-color: white;
+}
+
+/* ── Chips de antelación ────────────────────── */
+.formulario-nota__chips {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  cursor: pointer;
+}
+
+.chip input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.chip__texto {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 1.1rem;
+  border-radius: 99px;
+  border: 1.5px solid #dce8f5;
+  background: white;
+  color: #1a4a8a;
+  font-size: 0.83rem;
+  font-weight: 600;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.chip__texto:hover {
+  border-color: #00b8d9;
+}
+
+.chip input[type="radio"]:checked + .chip__texto {
+  background: linear-gradient(135deg, #1a4a8a, #00b8d9);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 3px 10px rgba(0, 184, 217, 0.3);
+}
+
+@media (max-width: 560px) {
+  .formulario-nota__fila { grid-template-columns: 1fr; }
+}

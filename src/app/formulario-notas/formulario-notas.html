@@ -1,43 +1,89 @@
 <section class="aplicacion__seccion" aria-labelledby="titulo-formulario">
   <h2 class="aplicacion__subtitulo" id="titulo-formulario">
-    @if (notaId !== null) { Editando nota } 
+    @if (notaId !== null) { Editando nota }
     @else { Redactar nueva nota }
   </h2>
-  
+
   <form class="formulario-nota" (ngSubmit)="guardar()">
     <fieldset class="formulario-nota__grupo">
       <legend class="formulario-nota__leyenda">Detalles de tu nota</legend>
-      
+
       <p class="formulario-nota__campo">
         <label class="formulario-nota__etiqueta" for="titulo-nota">Título de la nota:</label>
-        <input 
+        <input
           class="formulario-nota__entrada"
-          type="text" 
-          id="titulo-nota" 
-          name="titulo" 
+          type="text"
+          id="titulo-nota"
+          name="titulo"
           [(ngModel)]="titulo"
-          placeholder="Ej. Lista de la compra..." 
-          required 
+          placeholder="Ej. Lista de la compra..."
+          required
         />
       </p>
-      
+
       <p class="formulario-nota__campo">
         <label class="formulario-nota__etiqueta" for="contenido-nota">Contenido:</label>
-        <textarea 
+        <textarea
           class="formulario-nota__entrada formulario-nota__entrada--area"
-          id="contenido-nota" 
-          name="contenido" 
+          id="contenido-nota"
+          name="contenido"
           [(ngModel)]="contenido"
-          placeholder="Escribe todos los detalles aquí..." 
-          rows="4" 
+          placeholder="Escribe todos los detalles aquí..."
+          rows="4"
           required
         ></textarea>
       </p>
-      
+
+      <!-- Bloque recordatorio opcional -->
+      <div class="formulario-nota__bloque-recordatorio">
+        <p class="formulario-nota__bloque-titulo">
+          Recordatorio
+          <span class="formulario-nota__opcional">(opcional)</span>
+        </p>
+
+        <div class="formulario-nota__fila">
+          <p class="formulario-nota__campo">
+            <label class="formulario-nota__etiqueta" for="fecha-recordatorio">Fecha</label>
+            <input
+              class="formulario-nota__entrada"
+              type="date"
+              id="fecha-recordatorio"
+              name="fechaRecordatorio"
+              [(ngModel)]="fechaRecordatorio"
+            />
+          </p>
+
+          <p class="formulario-nota__campo">
+            <label class="formulario-nota__etiqueta" for="hora-recordatorio">Hora</label>
+            <input
+              class="formulario-nota__entrada"
+              type="time"
+              id="hora-recordatorio"
+              name="horaRecordatorio"
+              [(ngModel)]="horaRecordatorio"
+            />
+          </p>
+        </div>
+
+        <p class="formulario-nota__campo">
+          <label class="formulario-nota__etiqueta">Avisarme con antelación</label>
+          <span class="formulario-nota__chips" role="group">
+            <label class="chip">
+              <input type="radio" name="antelacion" value="60" [(ngModel)]="antelacion" />
+              <span class="chip__texto">1 hora antes</span>
+            </label>
+            <label class="chip">
+              <input type="radio" name="antelacion" value="1440" [(ngModel)]="antelacion" />
+              <span class="chip__texto">1 día antes</span>
+            </label>
+          </span>
+        </p>
+      </div>
+
       <ul class="formulario-nota__acciones">
         <li>
           <button class="boton boton--primario" type="submit">
-            @if (notaId !== null) { Actualizar } 
+            @if (notaId !== null) { Actualizar }
             @else { Guardar Nota }
           </button>
         </li>
