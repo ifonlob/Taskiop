@@ -15,10 +15,17 @@ export class ListaNotasComponent implements OnInit {
   notas: Nota[] = [];
   constructor(private notasService: NotasService) {}
 
-  ngOnInit() { this.notas = this.notasService.obtenerNotas(); }
+  ngOnInit() { 
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+
+    this.notas = this.notasService.obtenerNotas().filter((nota: Nota) => nota.idUsuario === usuario.id);
+  }
 
   eliminar(id: number) {
     this.notasService.eliminarNota(id);
-    this.notas = this.notasService.obtenerNotas();
+
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+
+    this.notas = this.notasService.obtenerNotas().filter((nota: Nota) => nota.idUsuario === usuario.id);
   }
 }

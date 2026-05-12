@@ -1,0 +1,28 @@
+.registro-container {
+  width: 350px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.registro-container h2 {
+  text-align: center;
+}
+
+.registro-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.registro-container button {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.registro-container p {
+  text-align: center;
+  margin-top: 15px;
+}

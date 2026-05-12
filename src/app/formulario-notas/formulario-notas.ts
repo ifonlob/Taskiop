@@ -41,6 +41,13 @@ export class FormularioNotasComponent implements OnInit {
       return; 
     }
 
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+
+    if (!usuario.id) {
+      alert('Debes iniciar sesión para crear una nota.');
+      return;
+    }
+
     if (this.notaId !== null) {
       this.notasService.actualizarNota(this.notaId, this.titulo, this.contenido);
     } else {
@@ -48,7 +55,8 @@ export class FormularioNotasComponent implements OnInit {
         id: Date.now(),
         titulo: this.titulo,
         contenido: this.contenido,
-        fecha: new Date().toISOString().split('T')[0]
+        fecha: new Date().toISOString().split('T')[0],
+        idUsuario: usuario.id
       });
     }
     

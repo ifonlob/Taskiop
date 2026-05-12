@@ -3,4 +3,5 @@ export interface Nota {
   titulo: string;
   contenido: string;
   fecha: string;
+  idUsuario: number;
 }
