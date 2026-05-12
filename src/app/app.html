@@ -7,15 +7,23 @@
       
       @if (!router.url.includes('/lista')) {
         <li>
-          <a routerLink="/lista" class="boton boton--secundario">
+          <a routerLink="/lista" routerLinkActive="activo" class="boton boton--secundario">
             Ver mis Notas
+          </a>
+        </li>
+      }
+
+      @if (!router.url.includes('/recordatorios')) {
+        <li>
+          <a routerLink="/recordatorios" routerLinkActive="activo" class="boton boton--secundario">
+            Recordatorios
           </a>
         </li>
       }
 
       @if (!router.url.includes('/formulario') && !router.url.includes('/editar')) {
         <li>
-          <a routerLink="/formulario" class="boton boton--primario">
+          <a routerLink="/formulario" routerLinkActive="activo" class="boton boton--primario">
             + Nueva Nota
           </a>
         </li>
