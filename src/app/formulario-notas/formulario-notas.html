@@ -4,7 +4,7 @@
     @else { Redactar nueva nota }
   </h2>
   
-  <form class="formulario-nota" (ngSubmit)="guardar()">
+<form class="formulario-nota" [formGroup]="formularioNota" (ngSubmit)="guardar()">
     <fieldset class="formulario-nota__grupo">
       <legend class="formulario-nota__leyenda">Detalles de tu nota</legend>
       
@@ -14,11 +14,17 @@
           class="formulario-nota__entrada"
           type="text" 
           id="titulo-nota" 
-          name="titulo" 
-          [(ngModel)]="titulo"
+          formControlName="titulo" 
           placeholder="Ej. Lista de la compra..." 
-          required 
         />
+
+        @if (formularioNota.get('titulo')?.invalid && formularioNota.get('titulo')?.touched) {
+          <span class="mensaje-error">
+            @if (formularioNota.get('titulo')?.hasError('required')) { El título es obligatorio. }
+            @if (formularioNota.get('titulo')?.hasError('minlength')) { Mínimo 4 caracteres. }
+            @if (formularioNota.get('titulo')?.hasError('maxlength')) { Máximo 20 caracteres. }
+          </span>
+        }
       </p>
       
       <p class="formulario-nota__campo">
@@ -27,11 +33,18 @@
           class="formulario-nota__entrada formulario-nota__entrada--area"
           id="contenido-nota" 
           name="contenido" 
-          [(ngModel)]="contenido"
+          formControlName="contenido"
           placeholder="Escribe todos los detalles aquí..." 
           rows="4" 
-          required
         ></textarea>
+
+        @if (formularioNota.get('contenido')?.invalid && formularioNota.get('contenido')?.touched) {
+          <span class="mensaje-error">
+            @if (formularioNota.get('contenido')?.hasError('required')) { El contenido es obligatorio. }
+            @if (formularioNota.get('contenido')?.hasError('minlength')) { Mínimo 15 caracteres. }
+            @if (formularioNota.get('contenido')?.hasError('maxlength')) { Máximo 400 caracteres. }
+          </span>
+        }
       </p>
       
       <ul class="formulario-nota__acciones">

@@ -1,19 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms'; 
 import { NotasService } from '../servicios/notas-service';
 
 @Component({
   selector: 'app-formulario-notas',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './formulario-notas.html',
   styleUrl: './formulario-notas.css'
 })
 export class FormularioNotasComponent implements OnInit {
   notaId: number | null = null;
-  titulo: string = '';
-  contenido: string = '';
+  
+  formularioNota = new FormGroup({
+    titulo: new FormControl('', [
+      Validators.required, 
+      Validators.minLength(4), 
+      Validators.maxLength(20)
+    ]),
+    contenido: new FormControl('', [
+      Validators.required, 
+      Validators.minLength(15), 
+      Validators.maxLength(400)
+    ])
+  });
 
   constructor(
     private route: ActivatedRoute, 
@@ -29,25 +40,27 @@ export class FormularioNotasComponent implements OnInit {
       const nota = this.notasService.obtenerNotaPorId(this.notaId);
       
       if (nota) {
-        this.titulo = nota.titulo;
-        this.contenido = nota.contenido;
+        this.formularioNota.patchValue({
+          titulo: nota.titulo,
+          contenido: nota.contenido
+        });
       }
     }
   }
 
-  guardar() {
-    if (this.titulo.trim() === '' || this.contenido.trim() === '') {
-      alert('Por favor, rellena el título y el contenido.');
-      return; 
-    }
+guardar() {
+    if (this.formularioNota.invalid) return;
+
+    const tituloValido = (this.formularioNota.value.titulo ?? '').trim();
+    const contenidoValido = (this.formularioNota.value.contenido ?? '').trim();
 
     if (this.notaId !== null) {
-      this.notasService.actualizarNota(this.notaId, this.titulo, this.contenido);
+      this.notasService.actualizarNota(this.notaId, tituloValido, contenidoValido);
     } else {
       this.notasService.agregarNota({
         id: Date.now(),
-        titulo: this.titulo,
-        contenido: this.contenido,
+        titulo: tituloValido,
+        contenido: contenidoValido,
         fecha: new Date().toISOString().split('T')[0]
       });
     }
