@@ -49,7 +49,7 @@
       
       <ul class="formulario-nota__acciones">
         <li>
-          <button class="boton boton--primario" type="submit">
+          <button class="boton boton--primario" type="submit" [disabled]="formularioNota.invalid">
             @if (notaId !== null) { Actualizar } 
             @else { Guardar Nota }
           </button>
